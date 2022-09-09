@@ -1,19 +1,32 @@
-// import connectionDB from './roots/connectionDB.js'
-// import accountRouter from './roots/account.js'
-// import queries from './roots/queries.js'
-// import report from './roots/report.js'
-// import post from './roots/post.js'
+import connectionDB from './roots/connectionDB.js'
+import accountRouter from './roots/account.js'
+import queries from './roots/queries.js'
+import report from './roots/report.js'
+import post from './roots/post.js'
+//------------------------V2-----------------------------
+import modelsUser from './v2/modelsUser.js'
 
-// //----------------------Rutas--------------------------
+//-----------------------------------------------------
+import express from 'express'
 
-// function routerApp (app) {
+//----------------------Rutas--------------------------
 
-//   app.use("/acc", accountRouter)
-//   app.use("/consultas", queries)
-//   app.use("/informe", report)
-//   app.use("/post", post)
-//   app.use("/connectionDB", connectionDB)
+function routerApp(app) {
 
-// }
+  const route = express.Router()
+  app.use('/api/v1', route)
 
-// export default routerApp
+  route.use("/acc", accountRouter)
+  route.use("/consultas", queries)
+  route.use("/informe", report)
+  route.use("/post", post)
+  route.use("/connectionDB", connectionDB)
+
+  const routev2 = express.Router()
+  app.use('/api/v2', routev2)
+
+  routev2.use('/users', modelsUser)
+
+}
+
+export default routerApp

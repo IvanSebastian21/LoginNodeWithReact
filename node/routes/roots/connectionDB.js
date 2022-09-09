@@ -1,124 +1,124 @@
-// import express from 'express'
-// import connection, { getAllUser, getUserDbById, updateUser, deleteUserById } from '../../database/db.js'
-// import ServicesUsers from '../../services/servicesUsers.js'
-// import validateHelper from '../../helpers/validateHelper.js'
-// import validation from '../../dto/validation.js'
+import express from 'express'
+import connection, { getAllUser, getUserDbById, updateUser, deleteUserById } from '../../database/db.js'
+import ServicesUsers from '../../services/servicesUsers.js'
+import validateHelper from '../../helpers/validateHelper.js'
+import validation from '../../dto/validation.js'
 
 
-// const connectionDB = express.Router()
+const connectionDB = express.Router()
 
-// const tablaDB = 'users'
+const tablaDB = 'users'
 
-// const serviceUser = new ServicesUsers()
+const serviceUser = new ServicesUsers()
 
-// //----------------------Insertar un Usuario---------------------- 
+//----------------------Insertar un Usuario---------------------- 
 
-// connectionDB.post('/addUser', validateHelper(validation.createdUsersValidation), async (req, res, next) => {
+connectionDB.post('/addUser', validateHelper(validation.createdUsersValidation), async (req, res, next) => {
 
-//   const { name, lastname, email, rol, firmador } = req.body
+  const { name, lastname, email, rol, firmador } = req.body
 
-//   const user = {
-//     name,
-//     lastname,
-//     email,
-//     rol,
-//     firmador
-//   }
+  const user = {
+    name,
+    lastname,
+    email,
+    rol,
+    firmador
+  }
 
-//   try {
+  try {
 
-//     const userAdd = await serviceUser.created(user)
+    const userAdd = await serviceUser.created(user)
 
-//     return res.status(201).send({ message: 'created', userAdd })
+    return res.status(201).send({ message: 'created', userAdd })
 
-//   } catch (error) {
+  } catch (error) {
 
-//     next(error)
+    next(error)
 
-//   }
+  }
 
-// })
+})
 
 
-// //----------------------Obtener TODOS los usuarios---------------------- 
+//----------------------Obtener TODOS los usuarios---------------------- 
 
-// connectionDB.get('/getAllUser', (req, res) => {
+connectionDB.get('/getAllUser', (req, res) => {
 
-//   getAllUser(tablaDB, (err, result) => {
+  getAllUser(tablaDB, (err, result) => {
 
-//     if (err) throw err
+    if (err) throw err
 
-//     console.log(result)
+    console.log(result)
 
-//     res.send(result)
+    res.send(result)
 
-//   })
-// })
+  })
+})
 
-// //----------------------Obtener UN usuario---------------------- 
+//----------------------Obtener UN usuario---------------------- 
 
-// connectionDB.get('/getOneUser/:id', (req, res) => {
+connectionDB.get('/getOneUser/:id', (req, res) => {
 
-//   //console.log(req.params.id)
+  //console.log(req.params.id)
 
-//   let { id } = req.params
+  let { id } = req.params
 
-//   getUserDbById(id, tablaDB, (err, result) => {
+  getUserDbById(id, tablaDB, (err, result) => {
 
-//     if (err) throw err
-//     //console.log(result)
+    if (err) throw err
+    //console.log(result)
 
-//     res.send(result[0])
+    res.send(result[0])
 
-//   })
-// })
+  })
+})
 
-// //----------------------Modificar UN usuario---------------------- 
+//----------------------Modificar UN usuario---------------------- 
 
-// connectionDB.get('/upDateUser/:id', (req, res) => {
+connectionDB.get('/upDateUser/:id', (req, res) => {
 
-//   let { id } = req.params
+  let { id } = req.params
 
-//   let usuario = {
-//     name: 'Zenón',
-//     lastname: 'De Citio'
-//   }
+  let usuario = {
+    name: 'Zenón',
+    lastname: 'De Citio'
+  }
 
-//   updateUser(id, tablaDB, usuario, (err, result) => {
+  updateUser(id, tablaDB, usuario, (err, result) => {
 
-//     if (err) throw err
-//     console.log(result)
+    if (err) throw err
+    console.log(result)
 
-//     res.send('Ok, usuario actualizado')
+    res.send('Ok, usuario actualizado')
 
-//   })
-// })
+  })
+})
 
-// //----------------------Eliminar UN usuario---------------------- 
+//----------------------Eliminar UN usuario---------------------- 
 
-// connectionDB.delete('/deleteUser/:id', (req, res) => {
+connectionDB.delete('/deleteUser/:id', (req, res) => {
 
-//   let { id } = req.params
+  let { id } = req.params
 
-//   deleteUserById(id, tablaDB, (err, result) => {
+  deleteUserById(id, tablaDB, (err, result) => {
 
-//     if (err) throw err
+    if (err) throw err
 
-//     console.log(result)
+    console.log(result)
 
-//     res.send('Usuario eliminado')
+    res.send('Usuario eliminado')
 
-//   })
-// })
+  })
+})
 
-// //----------------------connection--------------------------
+//----------------------connection--------------------------
 
-// connection.connect((error) => {
-//   if (error) {
-//     throw error;
-//   } else {
-//     console.log('Conexión correcta.');
-//   }
-// })
+connection.connect((error) => {
+  if (error) {
+    throw error;
+  } else {
+    console.log('Conexión correcta.');
+  }
+})
 
-// export default connectionDB
+export default connectionDB

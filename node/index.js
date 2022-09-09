@@ -1,13 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
-// import routerApp from './routes/indexRouters.js'
+import routerApp from './routes/indexRouters.js'
 import cors from 'cors'
 import { logErrors, errorHandler, boomErrorHandler } from './middlewares/handleError.js'
-// import { sequelize } from '../node/database/dbSequelize.js'
 import sequelize from './database/dbConnect.js'
-import UserModel from './models/modelosUsuario.js'
-
-
+ 
 dotenv.config()
 
 const PORT = process.env.PORT
@@ -24,16 +21,8 @@ app.use(express.text())
 
 //------------------------Importamos las rutas-------------------------------//
 
-// routerApp(app)
-app.get('/', (req, res) => {
-  UserModel.create({
-    name: 'Sir',
-    lastname:'Jonas',
-  }).then(user => {
-    res.json(user)
-  })
+routerApp(app)
 
-})
 //------------------------Middlewares-------------------------------// (Importante: El orden Si importa)
 
 app.use(logErrors)

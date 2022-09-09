@@ -14,22 +14,22 @@ const nameAndLastname = yup
       
       lastname: nameAndLastname.required("Campo apellido es requerido"),
 
-      email: yup
-        .string()
-        .email('Debe ser un correo electrónico válido')
-        .matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Carácteres inválidos")
-        .required("Campo email es requerido"),
+      // email: yup
+      //   .string()
+      //   .email('Debe ser un correo electrónico válido')
+      //   .matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Carácteres inválidos")
+      //   .required("Campo email es requerido"),
 
-      rol: yup
-        .string()
-        .required("Campo rol es requerido")
-        .oneOf(["empleado", "empleador"]),
+      // rol: yup
+      //   .string()
+      //   .required("Campo rol es requerido")
+      //   .oneOf(["empleado", "empleador"]),
 
-      firmador: yup
-        .boolean(),
+      // firmador: yup
+      //   .boolean(),
     }
-  ).noUnknown(true)
-
+  )
+  
   schema.validateSync(data)
 }
 
