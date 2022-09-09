@@ -21,7 +21,7 @@ const SearchUserById = ({ callback }) => {
           <Form.Control
             type="text"
             name="id"
-            placeholder='Buscar'
+            placeholder='Buscar...'
             onChange={formik.handleChange}
             value={formik.values.id}
             required />

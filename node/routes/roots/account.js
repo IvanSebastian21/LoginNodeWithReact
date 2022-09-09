@@ -1,5 +1,5 @@
 import express from 'express'
-import { USERS_BBDD } from '../bbdd.js'
+import { USERS_BBDD } from '../../bbdd.js'
 
 const accountRouter = express.Router()
 

@@ -1,14 +1,20 @@
 import mysql2 from 'mysql2'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const USER = encodeURIComponent(process.env.DB_USER)
+const PASSWORD = encodeURIComponent(process.env.DB_PASS)
 
 // Crear la conexión a la base de datos
 
 const configMySql = {
 
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'database_app',
-  port: 3306
+  host: process.env.DB_HOST,
+  user: USER,
+  password: PASSWORD,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 
 }
 
@@ -18,7 +24,7 @@ const connection = mysql2.createConnection(configMySql)
 
 const addUser = (tabla, user, cb) => {
 
-  let sql = `INSERT INTO ${tabla} (id, name, lastname) VALUES (null, '${user.name}', '${user.lastname}')`
+  let sql = `INSERT INTO ${tabla} (id, name, lastname, email, rol, firmador) VALUES (null, '${user.name}', '${user.lastname}', '${user.email}', '${user.rol}', '${user.firmador}')`
 
   connection.query(sql, (err, res) => {
 
