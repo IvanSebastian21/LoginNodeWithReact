@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 
 dotenv.config()
+
 // Instancia codificación UTF-8
 
 const USER = encodeURIComponent(process.env.DB_USER)

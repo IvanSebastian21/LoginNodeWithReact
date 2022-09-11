@@ -1,108 +1,108 @@
-import mysql2 from 'mysql2'
-import dotenv from 'dotenv'
+// import mysql2 from 'mysql2'
+// import dotenv from 'dotenv'
 
-dotenv.config()
+// dotenv.config()
 
-const USER = encodeURIComponent(process.env.DB_USER)
-const PASSWORD = encodeURIComponent(process.env.DB_PASS)
+// const USER = encodeURIComponent(process.env.DB_USER)
+// const PASSWORD = encodeURIComponent(process.env.DB_PASS)
 
-// Crear la conexión a la base de datos
+// // Crear la conexión a la base de datos
 
-const configMySql = {
+// const configMySql = {
 
-  host: process.env.DB_HOST,
-  user: USER,
-  password: PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT
+//   host: process.env.DB_HOST,
+//   user: USER,
+//   password: PASSWORD,
+//   database: process.env.DB_DATABASE,
+//   port: process.env.DB_PORT
 
-}
+// }
 
-const connection = mysql2.createConnection(configMySql)
+// const connection = mysql2.createConnection(configMySql)
 
-//----------------------Agregar usuario----------------------//
+// //----------------------Agregar usuario----------------------//
 
-const addUser = (tabla, user, cb) => {
+// const addUser = (tabla, user, cb) => {
 
-  let sql = `INSERT INTO ${tabla} (id, name, lastname, email, rol, firmador) VALUES (null, '${user.name}', '${user.lastname}', '${user.email}', '${user.rol}', '${user.firmador}')`
+//   let sql = `INSERT INTO ${tabla} (id, name, lastname, email, rol, firmador) VALUES (null, '${user.name}', '${user.lastname}', '${user.email}', '${user.rol}', '${user.firmador}')`
 
-  connection.query(sql, (err, res) => {
+//   connection.query(sql, (err, res) => {
 
-    if (err) cb(err, null)
+//     if (err) cb(err, null)
 
-    else cb(null, res)
+//     else cb(null, res)
 
-  })
-}
+//   })
+// }
 
-//----------------------Obtener TODOS los usuario----------------------//
+// //----------------------Obtener TODOS los usuario----------------------//
 
-const getAllUser = (tabla, cb) => {
+// const getAllUser = (tabla, cb) => {
 
-  let sql = `SELECT * from ${tabla}`
+//   let sql = `SELECT * from ${tabla}`
 
-  connection.query(sql, (err, res) => {
+//   connection.query(sql, (err, res) => {
 
-    if (err) cb(err, null)
+//     if (err) cb(err, null)
 
-    else cb(null, res)
+//     else cb(null, res)
 
-  })
-}
+//   })
+// }
 
-//----------------------Obtener UN usuario por Id----------------------//
+// //----------------------Obtener UN usuario por Id----------------------//
 
-const getUserDbById = (id, tabla, cb) => {
+// const getUserDbById = (id, tabla, cb) => {
 
-  let sql = `SELECT DISTINCT * FROM ${tabla} WHERE id = ${id}`
+//   let sql = `SELECT DISTINCT * FROM ${tabla} WHERE id = ${id}`
 
-  connection.query(sql, (err, res) => {
+//   connection.query(sql, (err, res) => {
 
-    if (err) cb(err, null)
+//     if (err) cb(err, null)
 
-    else cb(null, res)
+//     else cb(null, res)
     
-  })
-}
+//   })
+// }
 
-//----------------------Modificar usuario por Id----------------------//
+// //----------------------Modificar usuario por Id----------------------//
 
-const updateUser = (id, tabla, usuario, cb) => {
+// const updateUser = (id, tabla, usuario, cb) => {
   
-  let sql = `UPDATE ${tabla} SET name = '${usuario.name}', lastname = '${usuario.lastname}' WHERE id = ${id}`
+//   let sql = `UPDATE ${tabla} SET name = '${usuario.name}', lastname = '${usuario.lastname}' WHERE id = ${id}`
   
-  connection.query(sql, (err, res) => {
+//   connection.query(sql, (err, res) => {
 
-    if (err) cb(err, null)
+//     if (err) cb(err, null)
     
-    else cb(null, res)
+//     else cb(null, res)
     
-  })
-}
+//   })
+// }
 
-//----------------------eliminar UN usuario por Id----------------------//
+// //----------------------eliminar UN usuario por Id----------------------//
 
-const deleteUserById = (id, tabla, cb) => {
+// const deleteUserById = (id, tabla, cb) => {
   
-  let sql = `DELETE FROM ${tabla} WHERE id = ${id}`
+//   let sql = `DELETE FROM ${tabla} WHERE id = ${id}`
   
-  connection.query(sql, (err, res) => {
+//   connection.query(sql, (err, res) => {
 
-    if (err) cb(err, null)
+//     if (err) cb(err, null)
     
-    else cb(null, res)
+//     else cb(null, res)
     
-  })
-}
+//   })
+// }
 
 
 
-export {
-  addUser,
-  getAllUser,
-  getUserDbById,
-  updateUser,
-  deleteUserById
-}
+// export {
+//   addUser,
+//   getAllUser,
+//   getUserDbById,
+//   updateUser,
+//   deleteUserById
+// }
 
-export default connection
+// export default connection

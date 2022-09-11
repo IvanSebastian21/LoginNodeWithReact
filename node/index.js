@@ -4,7 +4,7 @@ import routerApp from './routes/indexRouters.js'
 import cors from 'cors'
 import { logErrors, errorHandler, boomErrorHandler } from './middlewares/handleError.js'
 import sequelize from './database/dbConnect.js'
- 
+
 dotenv.config()
 
 const PORT = process.env.PORT
@@ -18,6 +18,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.text())
+app.use(express.urlencoded({ extended: false }))
 
 //------------------------Importamos las rutas-------------------------------//
 
