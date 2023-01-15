@@ -4,20 +4,22 @@ import { Route, Routes, Navigate } from "react-router-dom"
 // CSS
 import './index.css'
 // RUTAS
-import NavBar from './components/NavBar'
-import Action from "./components/Action"
+import Login from './pages/Login'
+import NavBar from './pages/NavBar'
+import Action from "./pages/Action"
 // CRUD
-import AddUser from "./components/forms/AddUser"
-import PatchUser from "./components/forms/PatchUser"
+import AddUser from "./components/crud/AddUser"
+import PatchUser from "./components/crud/PatchUser"
 
 
 function App() {
   return (
     <div className="App">        
         <Routes>
-          <Route path="/" element={<NavBar />}>
+          <Route path="/" element={<Login />}/>
             
             {/* RUTA FORMULARIO */}
+            <Route path="NavBar" element={<NavBar />}>
             <Route path="Action" element={<Action/>}/>
             
             {/* CRUD */}

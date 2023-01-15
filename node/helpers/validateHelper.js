@@ -1,15 +1,18 @@
 import boom from '@hapi/boom'
 
-const validateHelper = (validation) => {
-  
+const validateHelper = (validation, property) => {
+
   return (req, res, next) => {
     try {
-      validation(req.body)
+      validation(req[property])
       next()
-    } catch (error) {
+    } catch (error) { 
       next(boom.badRequest(error))
     }
+
   }
 }
+
+
 
 export default validateHelper

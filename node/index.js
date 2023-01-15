@@ -1,9 +1,11 @@
+import sequelize from './database/dbConnect.js'
+import routerApp from './routes/indexRouters.js'
+import { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } from './middlewares/handleError.js'
 import express from 'express'
 import dotenv from 'dotenv'
-import routerApp from './routes/indexRouters.js'
 import cors from 'cors'
-import { logErrors, errorHandler, boomErrorHandler } from './middlewares/handleError.js'
-import sequelize from './database/dbConnect.js'
+import helmet from 'helmet'
+import morgan from 'morgan'
 
 dotenv.config()
 
@@ -13,20 +15,24 @@ const PORT = process.env.PORT
 
 const app = express()
 
-//------------------------Parseo de datos-----------------------//
+//------------------------Parseo de datos y Middlewares-----------------------//
 
 app.use(cors())
 app.use(express.json())
 app.use(express.text())
 app.use(express.urlencoded({ extended: false }))
+app.use(helmet())
+app.use(morgan('tiny'))
+app.disable('x-powered-by')
 
 //------------------------Importamos las rutas-------------------------------//
 
 routerApp(app)
 
-//------------------------Middlewares-------------------------------// (Importante: El orden Si importa)
+//------------------------Middlewares de Error-------------------------------// (Importante: El orden Si importa)
 
-app.use(logErrors)
+app.use(logErrors)  
+app.use(ormErrorHandler)
 app.use(boomErrorHandler)
 app.use(errorHandler)
 

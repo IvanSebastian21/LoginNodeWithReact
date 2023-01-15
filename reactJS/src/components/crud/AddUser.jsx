@@ -1,5 +1,5 @@
 import addUser from '../../services/addUser'
-import AlertComponent from './formComponents/AlertComponent'
+import AlertComponent from '../formComponents/AlertComponent'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { Col, Row, Container, Button, Form } from 'react-bootstrap'
@@ -33,7 +33,7 @@ const loginSchema = Yup.object({
   email: Yup
     .string()
     .email('Debe ser un correo electrónico válido')
-    .matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Carácteres inválidos")
+    .matches(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, "Carácteres inválidos")
     .required("Campo email es requerido"),
 })
 

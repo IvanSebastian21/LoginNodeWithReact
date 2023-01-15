@@ -14,7 +14,7 @@ const postAddUser = async (req, res) => {
       res.json({ message: "Se registro correctamente", user })
     })
   } catch (error) {
-    res.json({ message: error.message })
+    res.send({ message: error.message })
   }
 }
 
@@ -88,7 +88,7 @@ const deleteUser = (req, res) => {
 }
 
 //----------------------EXPORTS----------------------//
-export default {
+ export default {
   postAddUser,
   getAllUser,
   getFindOneUser,

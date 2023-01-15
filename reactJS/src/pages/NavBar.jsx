@@ -14,7 +14,7 @@ const NavBar = () => {
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
-			</Navbar>
+			</Navbar>|
 
 			<section>
 				<Outlet></Outlet>

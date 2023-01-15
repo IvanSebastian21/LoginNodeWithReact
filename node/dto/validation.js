@@ -4,7 +4,7 @@ const nameAndLastname = yup
   .string()
   .min(3, "Se necesita un minimo de 3 (tres) carácteres")
   .max(15, "Se alcanzo el máximo de 15 (diez) carácteres permitidos")
-  .matches(/^[a-zA-Z]+$/, "Se permiten únicamente carácteres alfabéticos")
+  .matches(/^[a-zA-Z]+$/, "Ups. Se permiten únicamente carácteres alfabéticos")
 
   const createdUsersValidation= (data) => {
     const schema = yup.object().shape({

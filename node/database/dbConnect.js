@@ -27,6 +27,12 @@ export const sequelize = new Sequelize(
   configDB.password,
   {
     host: configDB.host,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    },
     dialect: configDB.dialect
   }
 )

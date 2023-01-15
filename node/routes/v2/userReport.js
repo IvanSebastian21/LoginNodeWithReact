@@ -6,11 +6,11 @@ import userReportController from '../../controllers/userReportController.js'
 const userReport = express.Router()
 
 userReport
-  .post('/addUser', validateHelper(validation.createdUsersValidation), userReportController.postAddUser)
+  .post('/addUser', validateHelper(validation.createdUsersValidation,'body'), userReportController.postAddUser)
   .get('/allUser', userReportController.getAllUser)
   .get('/findOneUser/:id', userReportController.getFindOneUser)
   .get('/findAllUser', userReportController.getFindAllUser)
-  .patch('/updateUser/:id', validateHelper(validation.createdUsersValidation), userReportController.patchUpDateUser)
+  .patch('/updateUser/:id', validateHelper(validation.createdUsersValidation, 'body'), userReportController.patchUpDateUser)
   .delete('/deleteUser/:id', userReportController.deleteUser)
   
 export default userReport
